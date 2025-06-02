@@ -48,6 +48,6 @@ def mask_account_card(card_type_and_number: Any) -> Any:
 
 def get_date(numbers: str) -> str:
     """Функция принимает строчку и возвращает дату"""
-    new_get_date = numbers[8:10] + numbers[4:8] + numbers[0:4]
+    new_get_date = numbers[8:10] + "." + numbers[5:7] + "." + numbers[0:4]
 
     return new_get_date
