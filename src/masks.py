@@ -1,4 +1,5 @@
 import re
+from typing import Any
 
 
 def get_mask_card_number(card_number: int) -> str:
@@ -19,12 +20,13 @@ def get_mask_account(account_number: int) -> str:
 
 # print(get_mask_account())
 
+
 def is_cirillic(mem: str) -> bool:
     """фильтрация на русский типа карт"""
     return bool(re.search("[а-яА-Я]", mem))
 
 
-def mask_account_card(card_type_and_number: str) -> str:
+def mask_account_card(card_type_and_number: Any) -> Any:
     """Функция принимает тип и номер карты возвращает с замаскированными номером"""
     card_type = ""
     number_card = ""
@@ -34,19 +36,18 @@ def mask_account_card(card_type_and_number: str) -> str:
                 card_type += item
             else:
                 number_card += item
-    new_card_type = ""
-    for mem in card_type:
-        if  is_cirillic(mem):
 
-            return card_type + get_mask_account(number_card)
+    for mem in card_type:
+        if is_cirillic(mem):
+
+            return card_type + get_mask_account(int(number_card))
         else:
 
-            return card_type + get_mask_card_number(number_card)
+            return card_type + get_mask_card_number(int(number_card))
 
 
 def get_date(numbers: str) -> str:
     """Функция принимает строчку и возвращает дату"""
-    new_get_date = numbers[8:10]+numbers[4:8]+numbers[0:4]
+    new_get_date = numbers[8:10] + numbers[4:8] + numbers[0:4]
 
     return new_get_date
-
