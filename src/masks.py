@@ -20,6 +20,7 @@ def get_mask_account(account_number: int) -> str:
 # print(get_mask_account())
 
 def is_cirillic(mem: str) -> bool:
+    """фильтрация на русский типа карт"""
     return bool(re.search("[а-яА-Я]", mem))
 
 
@@ -41,3 +42,11 @@ def mask_account_card(card_type_and_number: str) -> str:
         else:
 
             return card_type + get_mask_card_number(number_card)
+
+
+def get_date(numbers: str) -> str:
+    """Функция принимает строчку и возвращает дату"""
+    new_get_date = numbers[8:10]+numbers[4:8]+numbers[0:4]
+
+    return new_get_date
+
