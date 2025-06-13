@@ -4,21 +4,26 @@ from typing import Any
 
 def get_mask_card_number(card_number: int) -> str:
     """принимает на вход номер карты и возвращает ее маску."""
+    if len(str(card_number)) != 16:
+        raise ValueError("Недопустимые символы")
     str_card_number = str(card_number)
-    return str_card_number[:4] + " " + str_card_number[4:6] + "**" + " " + "****" + " " + str_card_number[-4:]
+    if str_card_number.isdigit():
+        result = str_card_number[:4] + " " + str_card_number[4:6] + "**" + " " + "****" + " " + str_card_number[-4:]
+    return result
 
 
-# print(get_mask_card_number())
 
 
 def get_mask_account(account_number: int) -> str:
     """принимает на вход номер счета и возвращает его маску"""
+    if len(str(account_number)) < 20 or len(str(account_number)) > 20:
+        raise ValueError("Несоответсвующее количество символов")
     str_account_number = str(account_number)
-    result = "**" + str_account_number[-4:]
+    if str_account_number.isdigit():
+        result = "**" + str_account_number[-4:]
     return result
 
 
-# print(get_mask_account())
 
 
 def is_cirillic(mem: str) -> bool:
