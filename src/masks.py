@@ -12,8 +12,6 @@ def get_mask_card_number(card_number: int) -> str:
     return result
 
 
-
-
 def get_mask_account(account_number: int) -> str:
     """принимает на вход номер счета и возвращает его маску"""
     if len(str(account_number)) < 20 or len(str(account_number)) > 20:
@@ -22,8 +20,6 @@ def get_mask_account(account_number: int) -> str:
     if str_account_number.isdigit():
         result = "**" + str_account_number[-4:]
     return result
-
-
 
 
 def is_cirillic(mem: str) -> bool:
