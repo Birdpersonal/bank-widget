@@ -1,7 +1,7 @@
 import pytest
 from mypy.types import AnyType
 
-from generators import card_number_generator, filter_by_currency, transaction_descriptions
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.masks import get_date, get_mask_account, get_mask_card_number, mask_account_card
 
 full_transactions = [
