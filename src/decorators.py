@@ -1,9 +1,11 @@
+from functools import wraps
 from time import time
 from typing import Any
 
 
 def log(filename: Any) -> Any:
     def decorators(func: Any) -> Any:
+        @wraps(func)
         def wrapper(*args: tuple, **kwargs: dict[str, Any]) -> Any:
             try:
                 start_time = time()
@@ -31,7 +33,10 @@ def log(filename: Any) -> Any:
 
 @log(filename="mylog.txt")
 def my_function(x: int, y: int) -> int:
+    """функция сложения"""
     return x + y
 
 
-my_function(1, 2)
+# if __name__ == "__main__":
+#     print(help(my_function))
+# my_function(1, 2)
